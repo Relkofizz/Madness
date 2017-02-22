@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "0.0.1"
-group= "com.relko.madness" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "com.relkofizz.madness" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "madness"
 
 sourceCompatibility = targetCompatibility = "1.6" // Need this here so eclipse task generates correctly.
