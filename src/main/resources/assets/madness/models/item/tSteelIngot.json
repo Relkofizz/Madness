@@ -1,0 +1,9 @@
+{
+    "parent":"item/generated",
+    "display": {
+        
+    },
+    	"textures": {
+		"layer0": "madness:items/tSteelIngot"
+	}
+}
