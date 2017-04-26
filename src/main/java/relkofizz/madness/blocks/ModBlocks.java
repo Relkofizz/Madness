@@ -8,10 +8,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
-	public static BasicBlock madTable;
+	public static BasicBlock madTableD;
 	
 	public static void init() {
-		madTable = register(new BasicBlock(Material.ROCK,"madTable").setCreativeTab(CreativeTabs.MATERIALS));
+		madTableD = register(new MadTableBlock());
 
 	}
 
@@ -23,6 +23,10 @@ public class ModBlocks {
 			((BasicBlock)block).registerItemModel(itemBlock);
 		}
 
+		if (block instanceof BasicTileEntity) {
+			GameRegistry.registerTileEntity(((BasicTileEntity<?>)block).getTileEntityClass(), block.getRegistryName().toString());
+		}
+		
 		return block;
 	}
 
