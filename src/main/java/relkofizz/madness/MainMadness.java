@@ -36,6 +36,8 @@ public class MainMadness {
 		ModBlocks.init();
 		System.out.println(name + " is loading!");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MadnessGUIHandler());
+		proxy.registerRenderers();
+		
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(modId);
 		network.registerMessage(new PacketUpdateMadTable.Handler(), PacketUpdateMadTable.class, 0, Side.CLIENT);
 		network.registerMessage(new PacketRequestUpdateMadTable.Handler(), PacketRequestUpdateMadTable.class, 1, Side.SERVER);
