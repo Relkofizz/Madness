@@ -2,6 +2,7 @@ package relkofizz.madness.blocks.madTable;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -15,8 +16,7 @@ import relkofizz.madness.network.PacketRequestUpdateMadTable;
 import relkofizz.madness.network.PacketUpdateMadTable;
 
 public class MadTableTile extends TileEntity{
-	
-	public ItemStackHandler inventory = new ItemStackHandler(1){
+	public ItemStackHandler inventory = new ItemStackHandler(new ItemStack[9]){
 		@Override
 		protected void onContentsChanged(int slot){
 			if(!getWorld().isRemote){
@@ -57,6 +57,7 @@ public class MadTableTile extends TileEntity{
 	public void onLoad() {
 		if (this.getWorld().isRemote) {
 			MainMadness.network.sendToServer(new PacketRequestUpdateMadTable(this));
+			inventory.setSize(9);
 		}
 	}
 	
@@ -64,5 +65,4 @@ public class MadTableTile extends TileEntity{
 	public AxisAlignedBB getRenderBoundingBox() {
 		return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
 	}
-	
 }

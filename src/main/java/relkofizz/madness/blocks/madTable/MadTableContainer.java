@@ -13,20 +13,25 @@ import net.minecraftforge.items.SlotItemHandler;
 public class MadTableContainer extends Container{
 
 	public MadTableContainer(InventoryPlayer playerInv, final MadTableTile madTable) {
-		IItemHandler inventory = madTable.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
-		addSlotToContainer(new SlotItemHandler(inventory, 0, 80, 17) {
-			@Override
-			public void onSlotChanged() {
-				madTable.markDirty();
+		if(madTable.inventory.getSlots()!=9){
+			madTable.inventory.setSize(9); //this is a hacky fix, the inventory seems to initialize with one slot for some reason, temporary
+		}
+		for (int i=0; i<3; i++){
+			for (int j=0; j<3; j++){
+				addSlotToContainer(new SlotItemHandler(madTable.inventory, i*3+j, 62+18*j, 17+18*i) {
+					@Override
+					public void onSlotChanged() {
+						madTable.markDirty();
+					}
+				});
 			}
-		});
-
+		}
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
-	
+		
 		for (int k = 0; k < 9; k++) {
 			addSlotToContainer(new Slot(playerInv, k, 8 + k * 18, 142));
 		}
