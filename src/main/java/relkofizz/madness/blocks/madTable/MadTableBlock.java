@@ -39,15 +39,7 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			MadTableTile tile = getTileEntity(world, pos);
-			IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
-			if (!player.isSneaking()) {
-				if (heldItem == null) {
-					player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
-				} else {
-					player.setHeldItem(hand, itemHandler.insertItem(0, heldItem, false));
-				}
-				tile.markDirty();
+			if (player.isSneaking()) {
 			} else {
 				player.openGui(MainMadness.instance, MadnessGUIHandler.MADTABLE, world, pos.getX(), pos.getY(), pos.getZ());
 			}
