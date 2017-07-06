@@ -1,0 +1,12 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": {
+			"model": "madness:tinytable"
+		},
+		"inventory": {
+			"model": "madness:tinytable",
+			"transform": "forge:default-block"
+		}
+	}
+}

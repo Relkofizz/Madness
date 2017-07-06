@@ -6,13 +6,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import relkofizz.madness.blocks.madTable.MadTableBlock;
+import relkofizz.madness.blocks.tinyTable.TinyTableBlock;
 
 public class ModBlocks {
 
-	public static BasicBlock madTableD;
+	public static BasicBlock madTable;
+	public static TinyTableBlock tinyTable;
 	
 	public static void init() {
-		madTableD = register(new MadTableBlock());
+		madTable = register(new MadTableBlock());
+		tinyTable = register(new TinyTableBlock());
 
 	}
 
