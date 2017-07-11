@@ -16,15 +16,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import relkofizz.madness.MadnessGUIHandler;
 import relkofizz.madness.MainMadness;
+import relkofizz.madness.blocks.BasicBlock;
 
-public class TinyTableBlock extends BlockWorkbench{
+public class TinyTableBlock extends BasicBlock{
 
-	protected String name = "tinyTable";
+	protected static String name = "tinyTable";
 	public TinyTableBlock()
     {
-        super();
-        this.setUnlocalizedName(name);
-        this.setRegistryName(name);
+        super(Material.WOOD,name);
         this.fullBlock = false;
         this.lightOpacity = 3;
         this.blockHardness = 0;
@@ -32,10 +31,6 @@ public class TinyTableBlock extends BlockWorkbench{
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
-	}
-	
-	public void registerItemModel(ItemBlock itemBlock) {
-		MainMadness.proxy.registerItemRenderer(itemBlock, 0, name);
 	}
 	
 	@Override 
@@ -52,8 +47,12 @@ public class TinyTableBlock extends BlockWorkbench{
 	            playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
 	            return true;
 	        }
+        }else{
+        	if(playerIn.getHeldItemMainhand()==null){
+				playerIn.setHeldItem(hand, this.getDrops(worldIn, pos, state, 0).get(0));
+				this.removedByPlayer(state, worldIn, pos, playerIn, false);
+			}
         }
 	return false;
     }
 }
-

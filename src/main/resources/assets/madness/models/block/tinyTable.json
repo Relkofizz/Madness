@@ -1,4 +1,4 @@
-﻿{
+{
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"textures": {
 		"1": "madness:blocks/TinyTable",
@@ -164,13 +164,5 @@
 				"angle": 0
 			}
 		}
-	],
-	"display": {
-		"thirdperson": {
-			"rotation": [10, -45, 170],
-			"translation": [0, 1.5, -2.75],
-			"scale": [0.375, 0.375, 0.375]
-		},
-		"thirdperson_righthand": {"scale": [1, 1, 1]}
-	}
+	]
 }

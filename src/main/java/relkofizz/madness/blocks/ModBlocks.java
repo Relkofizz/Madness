@@ -16,7 +16,6 @@ public class ModBlocks {
 	public static void init() {
 		madTable = register(new MadTableBlock());
 		tinyTable = register(new TinyTableBlock());
-
 	}
 
 	private static <T extends Block> T register(T block, ItemBlock itemBlock) {
@@ -35,6 +34,7 @@ public class ModBlocks {
 	}
 
 	private static <T extends Block> T register(T block) {
+		System.out.println("Register block :"+block.getUnlocalizedName()+" Registry:"+block.getRegistryName()); //Debug Code, comment out for release versions
 		ItemBlock itemBlock = new ItemBlock(block);
 		itemBlock.setRegistryName(block.getRegistryName());
 		return register(block, itemBlock);

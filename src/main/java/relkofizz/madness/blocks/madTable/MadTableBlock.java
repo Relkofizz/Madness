@@ -2,15 +2,16 @@ package relkofizz.madness.blocks.madTable;
 
 import javax.annotation.Nullable;
 
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -22,16 +23,15 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 
 	public MadTableBlock() {
 		super(Material.ROCK, "madTable");
+		this.setCreativeTab(CreativeTabs.DECORATIONS);
 	}
 	
 	@Override
-	@Deprecated
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 	
 	@Override
-	@Deprecated
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}	
@@ -60,6 +60,7 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		//Does not Drop all contents on breaking, block currently on hold, considering other crafting methods 
 		MadTableTile tile = getTileEntity(world, pos);
 		IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 		ItemStack stack = itemHandler.getStackInSlot(0);
