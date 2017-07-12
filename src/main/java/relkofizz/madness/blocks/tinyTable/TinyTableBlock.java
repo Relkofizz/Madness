@@ -27,6 +27,7 @@ public class TinyTableBlock extends BasicBlock{
         this.fullBlock = false;
         this.lightOpacity = 3;
         this.blockHardness = 0;
+        this.setCreativeTab(CreativeTabs.DECORATIONS);
     }
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {

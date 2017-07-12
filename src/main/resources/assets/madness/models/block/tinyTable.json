@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"textures": {
 		"1": "madness:blocks/TinyTable",
-		"particle": "madness:blocks/TinyTable"
+		"particle": "blocks/crafting_table_top"
 	},
 	"elements": [
 		{
