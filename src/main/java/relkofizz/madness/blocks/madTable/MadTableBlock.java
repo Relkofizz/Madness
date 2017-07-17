@@ -36,8 +36,8 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 		return false;
 	}	
 	
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	@Override 
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			if (player.isSneaking()) {
 			} else {
@@ -66,7 +66,7 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 		ItemStack stack = itemHandler.getStackInSlot(0);
 		if (stack != null) {
 			EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-			world.spawnEntityInWorld(item);
+			world.spawnEntity(item);
 		}
 		super.breakBlock(world, pos, state);
 	}

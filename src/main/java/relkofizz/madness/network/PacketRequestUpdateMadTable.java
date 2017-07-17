@@ -42,7 +42,7 @@ public class PacketRequestUpdateMadTable implements IMessage{
 	
 		@Override
 		public PacketUpdateMadTable onMessage(PacketRequestUpdateMadTable message, MessageContext ctx) {
-			World world = FMLCommonHandler.instance().getMinecraftServerInstance().worldServerForDimension(message.dimension);
+			World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(message.dimension);
 			MadTableTile te = (MadTableTile)world.getTileEntity(message.pos);
 			if (te != null) {
 				return new PacketUpdateMadTable(te);

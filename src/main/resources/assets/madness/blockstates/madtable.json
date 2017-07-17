@@ -5,8 +5,7 @@
 			"model": "madness:madtable"
 		},
 		"inventory": {
-			"model": "madness:madtable",
-			"transform": "forge:default-block"
+			"model": "madness:madtable"
 		}
 	}
 }

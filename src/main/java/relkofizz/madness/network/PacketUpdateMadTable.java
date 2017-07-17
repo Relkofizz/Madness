@@ -16,14 +16,13 @@ public class PacketUpdateMadTable implements IMessage {
 	private ItemStack stack;
 	private long lastChangeTime;
 	
-	public PacketUpdateMadTable(BlockPos pos, ItemStack stack, long lastChangeTime){
+	public PacketUpdateMadTable(BlockPos pos, ItemStack stack){
 		this.pos =pos;
 		this.stack = stack;
-		this.lastChangeTime = lastChangeTime;
 	}
 	
 	public PacketUpdateMadTable(MadTableTile te){
-		this(te.getPos(), te.inventory.getStackInSlot(0), te.lastChangeTime);
+		this(te.getPos(), te.inventory.getStackInSlot(0));
 	}
 
 	public PacketUpdateMadTable(){
@@ -49,9 +48,8 @@ public class PacketUpdateMadTable implements IMessage {
 		@Override
 		public IMessage onMessage(PacketUpdateMadTable message, MessageContext ctx) {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
-				MadTableTile te = (MadTableTile)Minecraft.getMinecraft().theWorld.getTileEntity(message.pos);
+				MadTableTile te = (MadTableTile)Minecraft.getMinecraft().world.getTileEntity(message.pos);
 				te.inventory.setStackInSlot(0, message.stack);
-				te.lastChangeTime = message.lastChangeTime;
 			});
 			return null;
 		}

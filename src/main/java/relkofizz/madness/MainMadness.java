@@ -32,8 +32,6 @@ public class MainMadness {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ModItems.init();
-		ModBlocks.init();
 		System.out.println(name + " is loading!");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MadnessGUIHandler());
 		proxy.registerRenderers();

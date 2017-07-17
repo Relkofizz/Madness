@@ -46,7 +46,7 @@ public class MadTableContainer extends Container{
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.length;
+			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size();
 			if (index < containerSlots) {
 				if (!this.mergeItemStack(itemstack1, containerSlots, inventorySlots.size(), true)) {
 					return null;
@@ -54,15 +54,15 @@ public class MadTableContainer extends Container{
 			} else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false)) {
 				return null;
 			}
-			if (itemstack1.stackSize == 0) {
+			if (itemstack1.isEmpty()) {
 				slot.putStack(null);
 			} else {
 				slot.onSlotChanged();
 			}
-			if (itemstack1.stackSize == itemstack.stackSize) {
+			if (itemstack1.getCount() == itemstack.getCount()) {
 				return null;
 			}
-			slot.onPickupFromSlot(player, itemstack1);
+			slot.onTake(player, itemstack);
 		}
 		return itemstack;
 	}

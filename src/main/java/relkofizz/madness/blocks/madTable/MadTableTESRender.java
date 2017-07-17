@@ -16,7 +16,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 public class MadTableTESRender extends TileEntitySpecialRenderer<MadTableTile>{
 	
 	@Override
-	public void renderTileEntityAt(MadTableTile te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void render(MadTableTile te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		ItemStack stack = te.inventory.getStackInSlot(0);
 		if (stack != null) {
 			GlStateManager.enableRescaleNormal();

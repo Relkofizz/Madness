@@ -2,7 +2,6 @@ package relkofizz.madness.blocks.madTable;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -16,29 +15,24 @@ import relkofizz.madness.network.PacketRequestUpdateMadTable;
 import relkofizz.madness.network.PacketUpdateMadTable;
 
 public class MadTableTile extends TileEntity{
-	public ItemStackHandler inventory = new ItemStackHandler(new ItemStack[9]){
+	public ItemStackHandler inventory = new ItemStackHandler(){
 		@Override
 		protected void onContentsChanged(int slot){
 			if(!getWorld().isRemote){
-				lastChangeTime = getWorld().getTotalWorldTime();
 				MainMadness.network.sendToAllAround(new PacketUpdateMadTable(MadTableTile.this), new NetworkRegistry.TargetPoint(getWorld().provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
 			}
 		}
 	};
-	
-	public long lastChangeTime;
-	
+		
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound){
 		compound.setTag("inventory", inventory.serializeNBT());
-		compound.setLong("lastChangeTime", lastChangeTime);
 		return super.writeToNBT(compound);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound){
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
-		lastChangeTime = compound.getLong("lastChangeTime");
 		super.readFromNBT(compound);
 	}
 	
@@ -47,6 +41,7 @@ public class MadTableTile extends TileEntity{
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {

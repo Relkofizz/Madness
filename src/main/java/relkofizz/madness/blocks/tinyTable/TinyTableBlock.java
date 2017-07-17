@@ -1,13 +1,9 @@
 package relkofizz.madness.blocks.tinyTable;
 
-import javax.annotation.Nullable;
-
-import net.minecraft.block.BlockWorkbench;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumFacing;
@@ -29,31 +25,36 @@ public class TinyTableBlock extends BasicBlock{
         this.blockHardness = 0;
         this.setCreativeTab(CreativeTabs.DECORATIONS);
     }
+	
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+	
 	@Override 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
+	{
 		if(!playerIn.isSneaking()){
 			if (worldIn.isRemote)
 	        {
 	            return true;
-	        }
-	        else
-	        {
+	        }else{
 	        	playerIn.openGui(MainMadness.instance, MadnessGUIHandler.TINYTABLE, worldIn, pos.getX(), pos.getY(), pos.getZ());
-	            playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
+	        	playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
 	            return true;
 	        }
         }else{
-        	if(playerIn.getHeldItemMainhand()==null){
-				playerIn.setHeldItem(hand, this.getDrops(worldIn, pos, state, 0).get(0));
+        	if(playerIn.getActiveItemStack().isEmpty()){
+				playerIn.setHeldItem(hand, new ItemStack(this));
 				this.removedByPlayer(state, worldIn, pos, playerIn, false);
 			}
-        }
+        }        		
+
 	return false;
     }
 }
