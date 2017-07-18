@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import relkofizz.madness.MainMadness;
 import relkofizz.madness.blocks.madTable.MadTableBlock;
 import relkofizz.madness.blocks.tinyTable.TinyTableBlock;
 import relkofizz.madness.items.ModItems;
