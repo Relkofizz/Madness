@@ -8,8 +8,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import relkofizz.madness.blocks.ModBlocks;
-import relkofizz.madness.items.ModItems;
 import relkofizz.madness.network.PacketRequestUpdateMadTable;
 import relkofizz.madness.network.PacketUpdateMadTable;
 import relkofizz.madness.proxy.CommonProxy;
