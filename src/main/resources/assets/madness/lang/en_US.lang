@@ -1,4 +1,7 @@
 # Items
 item.tSteelIngot.name=Tech Steel
+item.tectonicDestabilizer.name=Tectonic Destabilizer
+
+# Blocks
 tile.madTable.name=Mad Table
 tile.tinyTable.name=Tiny Table

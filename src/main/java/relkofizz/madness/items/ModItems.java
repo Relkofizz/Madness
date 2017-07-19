@@ -14,7 +14,7 @@ public class ModItems {
 	public static BasicItem tSteelIngot;
 	public static TectonicDestabilizer tectonicDestabilizer;
 	
-	public static void preInit() {
+	public static void init() {
 		System.out.println("Item Init Start");
 		
 		tSteelIngot = new BasicItem("tSteelIngot");
@@ -23,16 +23,5 @@ public class ModItems {
 		
 		itemRegList.add(tSteelIngot);
 		itemRegList.add(tectonicDestabilizer);
-	}
-	public static void postInit() {
-		tSteelIngot.registerItemModel();
-		tectonicDestabilizer.registerItemModel();
-	}
-
-	
-	
-	public static void register(BasicItem i) {
-		i.registerItemModel();
-		itemRegList.add(i);
 	}
 }
