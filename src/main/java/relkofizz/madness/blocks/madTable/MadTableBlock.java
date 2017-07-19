@@ -23,7 +23,7 @@ public class MadTableBlock extends BasicTileEntity<MadTableTile> {
 
 	public MadTableBlock() {
 		super(Material.ROCK, "madTable");
-		this.setCreativeTab(CreativeTabs.DECORATIONS);
+		this.setCreativeTab(MainMadness.creativeTab);
 	}
 	
 	@Override

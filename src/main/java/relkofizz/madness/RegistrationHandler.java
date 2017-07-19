@@ -34,16 +34,17 @@ public class RegistrationHandler {
 	}
 	
 	@SubscribeEvent
-	public static  void registerItemBlocks(final RegistryEvent.Register<Item> event) {
+	public static  void registerItems(final RegistryEvent.Register<Item> event) {
 		System.out.println("Madness Item Registration Start");
 		
-		ModItems.init();
+		ModItems.preInit();
 	
 		final Item[] items = new Item[ModItems.itemRegList.size()];
 		
 		ModItems.itemRegList.toArray(items);
 		
 		event.getRegistry().registerAll(items);
+		ModItems.postInit();
 	    
 	}
 	
@@ -52,8 +53,6 @@ public class RegistrationHandler {
 		// Move to a General solution
 		System.out.println("Madness Model Registration Start");
 			ModelLoader.setCustomModelResourceLocation(new ItemStack(ModBlocks.madTable).getItem(), new ItemStack(ModBlocks.madTable).getItemDamage(), new ModelResourceLocation(ModBlocks.madTable.getRegistryName(), "inventory"));
-			System.out.println(new ModelResourceLocation(ModBlocks.madTable.getRegistryName().toString()));
 			ModelLoader.setCustomModelResourceLocation(new ItemStack(ModBlocks.tinyTable).getItem(), new ItemStack(ModBlocks.tinyTable).getItemDamage(), new ModelResourceLocation(ModBlocks.tinyTable.getRegistryName(), "inventory"));
-			System.out.println(new ModelResourceLocation(ModBlocks.tinyTable.getRegistryName().toString()));
 	}
 }

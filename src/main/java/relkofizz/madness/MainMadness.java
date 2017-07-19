@@ -22,6 +22,8 @@ public class MainMadness {
 	
 	public static SimpleNetworkWrapper network;
 
+	public static final MadnessTab creativeTab = new MadnessTab();
+	
 	@SidedProxy(serverSide = "relkofizz.madness.proxy.CommonProxy", clientSide = "relkofizz.madness.proxy.ClientProxy")
 	public static CommonProxy proxy;
 	

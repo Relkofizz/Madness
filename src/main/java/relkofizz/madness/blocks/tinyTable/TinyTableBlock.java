@@ -23,7 +23,7 @@ public class TinyTableBlock extends BasicBlock{
         this.fullBlock = false;
         this.lightOpacity = 3;
         this.blockHardness = 0;
-        this.setCreativeTab(CreativeTabs.DECORATIONS);
+        this.setCreativeTab(MainMadness.creativeTab);
     }
 	
 	@Override

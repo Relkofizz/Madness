@@ -1,6 +1,5 @@
 package relkofizz.madness.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import relkofizz.madness.MainMadness;
 
@@ -12,15 +11,10 @@ public class BasicItem extends Item {
 		this.name = name;
 		setUnlocalizedName(name);
 		setRegistryName(name);
+		this.setCreativeTab(MainMadness.creativeTab);
 	}
 
 	public void registerItemModel() {
 		MainMadness.proxy.registerItemRenderer(this, 0, name);
-	}
-
-	@Override
-	public BasicItem setCreativeTab(CreativeTabs tab) {
-		super.setCreativeTab(tab);
-		return this;
 	}
 }
